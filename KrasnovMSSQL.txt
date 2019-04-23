@@ -95,7 +95,7 @@ CREATE TABLE [dbo].[TemperatuereOfFlowGasFromOuterTemperature](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[GasConsumptionFromOuterTemperature]    Script Date: 24.04.2019 20:08:54 ******/
+/****** Object:  Table [dbo].[GasConsumptionFromOuterTemperature]    Script Date: 23.04.2019 20:08:54 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -115,7 +115,7 @@ CREATE TABLE [dbo].[GasConsumptionFromOuterTemperature](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[GasTurine]    Script Date: 24.04.2019 20:08:54 ******/
+/****** Object:  Table [dbo].[GasTurine]    Script Date: 23.04.2019 20:08:54 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
