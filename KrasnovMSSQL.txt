@@ -133,7 +133,7 @@ CREATE TABLE [dbo].[GasTurbine](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[PowerFromOuterTemperature]    Script Date: 24.04.2019 20:08:54 ******/
+/****** Object:  Table [dbo].[PowerFromOuterTemperature]    Script Date: 23.04.2019 20:08:54 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
