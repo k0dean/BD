@@ -1,200 +1,84 @@
-USE [master]
-GO
-/****** Object:  Database [Gas Turbines]    Script Date: 24.04.2019 20:08:54 ******/
-CREATE DATABASE [Gas Turbines]
- CONTAINMENT = NONE
- ON  PRIMARY 
-( NAME = N'Gas Turbines', FILENAME = N'C:\Program Files (x86)\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\Gas Turbines.mdf' , SIZE = 5120KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
- LOG ON 
-( NAME = N'Gas Turbines_log', FILENAME = N'C:\Program Files (x86)\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\DATA\Gas Turbines_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
-GO
-ALTER DATABASE [Gas Turbines] SET COMPATIBILITY_LEVEL = 120
-GO
-IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
-begin
-EXEC [Gas Turbines].[dbo].[sp_fulltext_database] @action = 'enable'
-end
-GO
-ALTER DATABASE [Gas Turbines] SET ANSI_NULL_DEFAULT OFF 
-GO
-ALTER DATABASE [Gas Turbines] SET ANSI_NULLS OFF 
-GO
-ALTER DATABASE [Gas Turbines] SET ANSI_PADDING OFF 
-GO
-ALTER DATABASE [Gas Turbines] SET ANSI_WARNINGS OFF 
-GO
-ALTER DATABASE [Gas Turbines] SET ARITHABORT OFF 
-GO
-ALTER DATABASE [Gas Turbines] SET AUTO_CLOSE OFF 
-GO
-ALTER DATABASE [Gas Turbines] SET AUTO_SHRINK OFF 
-GO
-ALTER DATABASE [Gas Turbines] SET AUTO_UPDATE_STATISTICS ON 
-GO
-ALTER DATABASE [Gas Turbines] SET CURSOR_CLOSE_ON_COMMIT OFF 
-GO
-ALTER DATABASE [Gas Turbines] SET CURSOR_DEFAULT  GLOBAL 
-GO
-ALTER DATABASE [Gas Turbines] SET CONCAT_NULL_YIELDS_NULL OFF 
-GO
-ALTER DATABASE [Gas Turbines] SET NUMERIC_ROUNDABORT OFF 
-GO
-ALTER DATABASE [Gas Turbines] SET QUOTED_IDENTIFIER OFF 
-GO
-ALTER DATABASE [Gas Turbines] SET RECURSIVE_TRIGGERS OFF 
-GO
-ALTER DATABASE [Gas Turbines] SET  DISABLE_BROKER 
-GO
-ALTER DATABASE [Gas Turbines] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
-GO
-ALTER DATABASE [Gas Turbines] SET DATE_CORRELATION_OPTIMIZATION OFF 
-GO
-ALTER DATABASE [Gas Turbines] SET TRUSTWORTHY OFF 
-GO
-ALTER DATABASE [Gas Turbines] SET ALLOW_SNAPSHOT_ISOLATION OFF 
-GO
-ALTER DATABASE [Gas Turbines] SET PARAMETERIZATION SIMPLE 
-GO
-ALTER DATABASE [Gas Turbines] SET READ_COMMITTED_SNAPSHOT OFF 
-GO
-ALTER DATABASE [Gas Turbines] SET HONOR_BROKER_PRIORITY OFF 
-GO
-ALTER DATABASE [Gas Turbines] SET RECOVERY SIMPLE 
-GO
-ALTER DATABASE [Gas Turbines] SET  MULTI_USER 
-GO
-ALTER DATABASE [Gas Turbines] SET PAGE_VERIFY CHECKSUM  
-GO
-ALTER DATABASE [Gas Turbines] SET DB_CHAINING OFF 
-GO
-ALTER DATABASE [Gas Turbines] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
-GO
-ALTER DATABASE [Gas Turbines] SET TARGET_RECOVERY_TIME = 0 SECONDS 
-GO
-ALTER DATABASE [Gas Turbines] SET DELAYED_DURABILITY = DISABLED 
-GO
-USE [Gas Turbines]
-GO
-/****** Object:  Table [dbo].[TemperatuereOfFlowGasFromOuterTemperature]    Script Date: 24.04.2019 20:08:54 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[TemperatuereOfFlowGasFromOuterTemperature](
-	[TemperatureofFlowGas] [real] NOT NULL,
-	[Temperature] [int] NOT NULL,
-	[GasTurbine] [varchar](65) NOT NULL,
- CONSTRAINT [PK_TemperatuereOfFlowGasFromOuterTemperature] PRIMARY KEY CLUSTERED 
-(
-	[Temperature] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
+-- MySQL Workbench Synchronization
+-- Generated: 2019-04-24 20:08
+-- Model: New Model
+-- Version: 1.0
+-- Project: Name of the project
+-- Author: k0dean
 
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[GasConsumptionFromOuterTemperature]    Script Date: 24.04.2019 20:08:54 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[GasConsumptionFromOuterTemperature](
-	[GasConsumption] [real] NOT NULL,
-	[Temperature] [int] NOT NULL,
-	[GasTurbine] [varchar](65) NOT NULL,
- CONSTRAINT [PK_GasConsumptionFromOuterTemperature] PRIMARY KEY CLUSTERED 
-(
-	[Temperature] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[GasTurine]    Script Date: 24.04.2019 20:08:54 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[GasTurbine](
-	[name] [varchar](65) NOT NULL,
- CONSTRAINT [PK_GasTurbine] PRIMARY KEY CLUSTERED 
-(
-	[name] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[PowerFromOuterTemperature]    Script Date: 24.04.2019 20:08:54 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[PowerFromOuterTemperature](
-	[Power] [real] NOT NULL,
-	[Temperature] [int] NOT NULL,
-	[GasTurbine] [varchar](65) NOT NULL,
- CONSTRAINT [PK_PowerFromOuterTemperature] PRIMARY KEY CLUSTERED 
-(
-	[Temperature] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
+CREATE TABLE IF NOT EXISTS `mydb`.`GasTurbine` (
+  `name` VARCHAR(65) NOT NULL,
+  PRIMARY KEY (`name`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`GasConsumptionFromOuterTemperature` (
+  `GasConsumption` DOUBLE NOT NULL,
+  `Temperature` INT(11) NOT NULL,
+  `GasTurbine` VARCHAR(65) NOT NULL,
+  PRIMARY KEY (`Temperature`),
+  INDEX `fk_GasConsumptionFromOuterTemperature_GasTurbine1_idx` (`GasTurbine` ASC),
+  CONSTRAINT `fk_GasConsumptionFromOuterTemperature_GasTurbine1`
+    FOREIGN KEY (`GasTurbine`)
+    REFERENCES `mydb`.`GasTurbine` (`name`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`TemperatureOfFlowGasFromOuterTemperature` (
+  `TemperatureOfFlowGas` DOUBLE NOT NULL,
+  `Temperature` INT(11) NOT NULL,
+  `GasTurbine` VARCHAR(65) NOT NULL,
+  PRIMARY KEY (`Temperature`),
+  INDEX `fk_TemperatureOfFlowGasFromTemperature_GasTurbine1_idx` (`GasTurbine` ASC),
+  CONSTRAINT `fk_TemperatureOfFlowGasFromTemperature_GasTurbine1`
+    FOREIGN KEY (`GasTurbine`)
+    REFERENCES `mydb`.`GasTurbine` (`name`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`PowerFromTemperature` (
+  'Power' INT(11) NOT NULL,
+  `Temperature` INT(11) NOT NULL,
+  `GasTurbine` VARCHAR(65) NOT NULL,
+  PRIMARY KEY (`Temperature`),
+  INDEX `fk_PowerFromTemperature_GasTurbine1_idx` (`GasTurbine` ASC),
+  CONSTRAINT `fk_PowerFromTemperature_GasTurbine1`
+    FOREIGN KEY (`GasTurbine`)
+    REFERENCES `mydb`.`GasTurbine` (`name`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
+
+CREATE TABLE IF NOT EXISTS `mydb`.`EfficiencyFromTemperature` (
+  'Efficiency' INT(11) NOT NULL,
+  `Temperature` INT(11) NOT NULL,
+  `GasTurbine` VARCHAR(65) NOT NULL,
+  PRIMARY KEY (`Temperature`),
+  INDEX `fk_PowerFromTemperature_GasTurbine1_idx` (`GasTurbine` ASC),
+  CONSTRAINT `fk_PowerFromTemperature_GasTurbine1`
+    FOREIGN KEY (`GasTurbine`)
+    REFERENCES `mydb`.`GasTurbine` (`name`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
 
 
-GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[EfficiencyFromOuterTemperature]    Script Date: 24.04.2019 20:08:54 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-CREATE TABLE [dbo].[PowerFromOuterTemperature](
-	[Efficiency] [real] NOT NULL,
-	[Temperature] [int] NOT NULL,
-	[GasTurbine] [varchar](65) NOT NULL,
- CONSTRAINT [PK_PowerFromOuterTemperature] PRIMARY KEY CLUSTERED 
-(
-	[Temperature] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-
-GO
-SET ANSI_PADDING OFF
-GO
-ALTER TABLE [dbo].[TemperatureOfFlowGasFromOuterTemperature]  WITH CHECK ADD  CONSTRAINT [FK_TemperatureOfFlowGasFromOuterTemperature_GasTurbine] FOREIGN KEY([GasTurbine])
-REFERENCES [dbo].[GasTurbine] ([name])
-GO
-ALTER TABLE [dbo].[TemperatureOfFlowGasFromOuterTemperature] CHECK CONSTRAINT [TemperatureOfFlowGasFromOuterTemperature_GasTurbine]
-GO
-ALTER TABLE [dbo].[GasConsumptionFromOuterTemperature]  WITH CHECK ADD  CONSTRAINT [FK_GasConsumptionFromOuterTemperature_GasTurbine] FOREIGN KEY([GasTurbine])
-REFERENCES [dbo].[GasTurbine] ([name])
-GO
-ALTER TABLE [dbo].[GasConsumptionFromOuterTemperature] CHECK CONSTRAINT [FK_GasConsumptionFromOuterTemperature_GasTurbine]
-GO
-ALTER TABLE [dbo].[PowerFromOuterTemperature]  WITH CHECK ADD  CONSTRAINT [FK_PowerFromOuterTemperature_GasTurbine] FOREIGN KEY([GasTurbine])
-REFERENCES [dbo].[GasTurbine] ([name])
-GO
-ALTER TABLE [dbo].[PowerFromOuterTemperature] CHECK CONSTRAINT [FK_PowerFromOuterTemperature_GasTurbine]
-GO
-ALTER TABLE [dbo].[EfficiencyFromOuterTemperature]  WITH CHECK ADD  CONSTRAINT [FK_EfficiencyFromOuterTemperature_GasTurbine] FOREIGN KEY([GasTurbine])
-REFERENCES [dbo].[GasTurbine] ([name])
-GO
-ALTER TABLE [dbo].[EfficiencyFromOuterTemperature] CHECK CONSTRAINT [FK_EfficiencyFromOuterTemperature_GasTurbine]
-GO
-USE [master]
-GO
-ALTER DATABASE [Gas Turbines] SET  READ_WRITE 
-GO
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
