@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [Gas Turbines]    Script Date: 24.04.2019 20:08:54 ******/
+/****** Object:  Database [Gas Turbines]    Script Date: 23.04.2019 20:08:54 ******/
 CREATE DATABASE [Gas Turbines]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -75,7 +75,7 @@ ALTER DATABASE [Gas Turbines] SET DELAYED_DURABILITY = DISABLED
 GO
 USE [Gas Turbines]
 GO
-/****** Object:  Table [dbo].[TemperatuereOfFlowGasFromOuterTemperature]    Script Date: 24.04.2019 20:08:54 ******/
+/****** Object:  Table [dbo].[TemperatuereOfFlowGasFromOuterTemperature]    Script Date: 23.04.2019 20:08:54 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -154,7 +154,7 @@ CREATE TABLE [dbo].[PowerFromOuterTemperature](
 GO
 SET ANSI_PADDING OFF
 GO
-/****** Object:  Table [dbo].[EfficiencyFromOuterTemperature]    Script Date: 24.04.2019 20:08:54 ******/
+/****** Object:  Table [dbo].[EfficiencyFromOuterTemperature]    Script Date: 23.04.2019 20:08:54 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
